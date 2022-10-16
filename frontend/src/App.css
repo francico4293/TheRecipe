@@ -1,0 +1,360 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600&family=Roboto:wght@300;400;500&display=swap');
+
+body {
+    width: 100vw;
+    font-family: 'Roboto';
+    background-color: #f9f6f2;
+    min-height: 50vh;
+}
+
+/* Styles for navbar */
+#navbar {
+  background-color: #ede0d4;
+  width: 100vw;
+}
+
+.nav-link i {
+padding-right: 5px;
+}
+
+/* Styles for landing page intro content */
+#landing-page-container {
+  height: 80vh;
+  min-height: 500px;
+  background-image: 
+      linear-gradient(
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.25)),
+      url('/Users/colinfrancis/Documents/CS361/the-recipe/frontend/public/images/landing-page-image.jpg');
+  background-size: cover;
+  background-position: center;
+  box-shadow: 2px 2px 2px grey;
+  position: relative;
+  color: white;
+  overflow: hidden;
+}
+
+#landing-page-container h1 {
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 5%;
+  transform: translateX(-50%);
+  font-size: 3vw;
+  font-weight: 300;
+}
+
+#content-container {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+}
+
+#slogan {
+  font-weight: 200;
+  font-size: 2.5vw;
+  line-height: 0;
+}
+
+#content {
+  font-size: 5vw;
+  font-weight: 500;
+  line-height: normal;
+}
+
+#hint-container {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+#hint-container p {
+  font-size: 2vw;
+}
+
+/* Styles for search results */
+#search-results-container {
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+#search-results-container h2 {
+  font-size: 3vw;
+}
+
+#search-results-container Button {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+#recipe-search {
+  width: 25vw;
+  padding: 15px 20px;
+  border-radius: 30px;
+  border: 1px solid black;
+  font-size: 1.5vw;
+}
+
+.fa-magnifying-glass, .fa-filter {
+  padding-left: 10px;
+  padding-right: 10px;
+  transform: translateY(3px);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.fa-magnifying-glass:hover, .fa-filter:hover {
+  transform: translateY(-3px);
+  color: rgb(95, 95, 95);
+}
+
+.fa-magnifying-glass:active {
+  transform: translateY(3px);
+}
+
+.search-results {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 70vw;
+}
+
+.recipe-result {
+  margin: 30px 50px;
+  box-shadow: 3px 3px 8px rgb(90, 90, 90);
+  transition: all 0.2s;
+}
+
+.recipe-result:hover {
+  transform: translateY(-5px);
+  box-shadow: 5px 5px 10px grey;
+}
+
+#recipe-actions-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#recipe-actions-container i {
+  cursor: pointer;
+}
+
+/* Styles for FAQ page */
+#faq-container {
+  height: 70vh;
+  min-height: 500px;
+  min-width: 1200px;
+  background-image: 
+  linear-gradient(
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.25)),
+      url('/Users/colinfrancis/Documents/CS361/the-recipe/frontend/public/images/faq-background.jpg');
+  background-size: cover;
+  background-position: center;
+  box-shadow: 2px 2px 2px grey;
+  position: relative;
+}
+
+#faq-container h1 {
+  color: white;
+  font-size: 50px;
+  font-weight: 500;
+  padding: 20px;
+}
+
+#faq-items {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#contact-us-container {
+  min-height: 30vh;
+  min-width: 1200px;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#contact-us-header {
+  margin-top: 30px;
+  font-size: 50px;
+  font-weight: 500;
+  text-align: center;
+}
+
+#contact-form {
+  margin-right: 30px;
+}
+
+#contact-us-container p {
+  font-size: 30px;
+  margin-left: 30px;
+  font-weight: 200;
+}
+
+/* Styles for login page */
+#login-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#login-container {
+  width: 1000px;
+  height: 500px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: 2px 2px 5px gray;
+}
+
+#login-container img {
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#login-form {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ede0d4;
+}
+
+/* Styles for signup page */
+#signup-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#signup-container {
+  width: 1000px;
+  height: 600px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: 2px 2px 5px gray;
+}
+
+#signup-container img {
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 20%;
+}
+
+#signup-form {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ede0d4;
+}
+
+/* Styles for recipe page */
+#recipe-container {
+  background-image: 
+      linear-gradient(
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.25)),
+      url('/Users/colinfrancis/Documents/CS361/personal-project/frontend/public/img/background-1.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+#recipe-container h2 {
+  color: white;
+  font-size: 4vw;
+  margin-top: 30px;
+}
+
+#inner-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+#inner-container div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 35%;
+  padding-left: 30px;
+}
+
+#recipe-taste {
+  min-width: 100%;
+  object-fit: contain;
+  background-color: white;
+  border-radius: 50px;
+}
+
+#recipe-card {
+  width: 65%;
+  padding-right: 30px;
+}
+
+#recipe-nutrition {
+  width: 65%;
+}
+
+/* Styles for cookbook */
+#cookbook-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #f9f6f2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Styles for footer */
+#footer-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 10px 0;
+  background-color: #ede0d4;
+  width: 100vw;
+}
+
+.fa-brands {
+  padding: 0 10px;
+}
