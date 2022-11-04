@@ -1,12 +1,19 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { WELCOME } from '../constants/commonConstants';
+import { showIngredientToolAction } from '../actions/userActions';
 
 const Header = () => {
+    const dispatch = useDispatch();
+
     const user = useSelector(state => state.user);
+
+    const dispatchShowIngredientToolAction = () => {
+        dispatch(showIngredientToolAction());
+    }
 
     const logout = () => {
         sessionStorage.clear();
@@ -51,6 +58,12 @@ const Header = () => {
                     <i className='fa-solid fa-spoon'></i>
                     TheRecipe
                 </Navbar.Brand>
+                <Nav className="me-auto">
+                    <Nav.Link className='nav-link' onClick={() => dispatchShowIngredientToolAction()}>
+                        <i className='fa-solid fa-lines-leaning'></i>
+                        Ingredient Defintion Tool
+                    </Nav.Link>
+                </Nav>
                 <Navbar.Toggle aria-controls='basic-navbar-nav'/>
                 <Navbar.Collapse id='basic-navbar-nav'>
                 <Nav className='ms-auto'>

@@ -3,7 +3,9 @@ import {
     LOGGED_IN,
     USER_REQUEST_ATTEMPT,
     USER_REQUEST_SUCCESS,
-    USER_REQUEST_FAILURE
+    USER_REQUEST_FAILURE,
+    SHOW_INGREDIENT_TOOL,
+    HIDE_INGREDIENT_TOOL
 } from '../constants/userConstants';
 
 export const userSignupActions = (firstName, lastName, email, password, navigate) => {
@@ -82,4 +84,12 @@ export const userRecipeFavoriteActions = (id, recipeId, title, image) => {
             console.error(err);
         }
     }
+}
+
+export const showIngredientToolAction = () => {
+    return { type: SHOW_INGREDIENT_TOOL };
+}
+
+export const hideIngredientToolAction = () => {
+    return { type: HIDE_INGREDIENT_TOOL };
 }

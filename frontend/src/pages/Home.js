@@ -14,6 +14,7 @@ import Paginate from '../components/Paginate';
 import { RESULTS, PAGE } from '../constants/recipeConstants';
 import Welcome from '../components/Welcome';
 import NutritionFilter from '../components/NutritionFilter';
+import IngredientDefinitionTool from '../components/IngredientDefinitionTool';
 import { WELCOME } from '../constants/commonConstants';
 
 const Home = () => {
@@ -80,6 +81,7 @@ const Home = () => {
     return (
         <>
             <Header/>
+            <IngredientDefinitionTool />
             <NutritionFilter showNutritionFilter={showNutritionFilter} setShowNutritionFilter={setShowNutritionFilter}/>
             {(reachedPageBottom && !sessionStorage.getItem(WELCOME)) && showWelcomeModal()}
             <div id='landing-page-container'>

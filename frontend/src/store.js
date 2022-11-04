@@ -13,7 +13,10 @@ import {
     recipeTasteReducer,
     similarRecipesReducer
 } from './reducers/recipeReducers';
-import { userReducer } from './reducers/userReducers';
+import { 
+    ingredientDefinitionToolReducer, 
+    userReducer 
+} from './reducers/userReducers';
 import { RESULTS, PAGE } from './constants/recipeConstants'
 import { DATA, LOGGED_IN } from './constants/userConstants';
 
@@ -24,7 +27,8 @@ const reducer = combineReducers({
     recipeCard: recipeCardReducer,
     recipeNutrition: recipeNutritionReducer,
     recipeTaste: recipeTasteReducer,
-    similarRecipes: similarRecipesReducer
+    similarRecipes: similarRecipesReducer,
+    ingredientDefinitionTool: ingredientDefinitionToolReducer
 });
 
 const resultsFromStorage = sessionStorage.getItem(RESULTS) 
