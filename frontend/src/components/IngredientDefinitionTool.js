@@ -32,7 +32,7 @@ const IngredientDefinitionTool = () => {
     }
 
     return (
-        <Offcanvas show={ingredientDefinitionTool.showTool} backdrop={false} scroll={true} onHide={() => dispatchHideIngredientToolAction()} placement='top'>
+        <Offcanvas show={ingredientDefinitionTool.showTool} backdrop={false} scroll={true} onHide={() => dispatchHideIngredientToolAction()} placement='top' style={{ height: '40%' }}>
             <Offcanvas.Header closeButton>
                 <Offcanvas.Title>Ingredient Definition Search Tool</Offcanvas.Title>
             </Offcanvas.Header>
