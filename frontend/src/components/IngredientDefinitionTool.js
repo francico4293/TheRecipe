@@ -31,8 +31,6 @@ const IngredientDefinitionTool = () => {
         }
     }
 
-    console.log(item);
-
     return (
         <Offcanvas show={ingredientDefinitionTool.showTool} backdrop={false} scroll={true} onHide={() => dispatchHideIngredientToolAction()} placement='top'>
             <Offcanvas.Header closeButton>
