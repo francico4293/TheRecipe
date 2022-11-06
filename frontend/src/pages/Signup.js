@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button';
 import Footer from '../components/Footer';
 import { userSignupActions } from '../actions/userActions';
 import Warning from '../components/Warning';
+import IngredientDefinitionTool from '../components/IngredientDefinitionTool';
 
 const Signup = () => {
     const passwordMismatchMessage = "The passwords you entered don't match.";
@@ -75,6 +76,7 @@ const Signup = () => {
     return (
         <div id='signup-page'>
             <Header/>
+            <IngredientDefinitionTool />
             {passwordMismatch && <Warning message={passwordMismatchMessage} setShow={setPasswordMismatch}/>}
             {getSignupComponent()}
             <Footer/>

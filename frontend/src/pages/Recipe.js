@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Spinner from 'react-bootstrap/Spinner';
 import RecipeResult from '../components/RecipeResult';
+import IngredientDefinitionTool from '../components/IngredientDefinitionTool';
 import { TasteProfile } from '../components/TasteProfile';
 
 const Recipe = () => {
@@ -41,6 +42,7 @@ const Recipe = () => {
     return (
         <>
             <Header />
+            <IngredientDefinitionTool />
             {getComponent()}
             <Footer />
         </>

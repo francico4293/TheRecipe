@@ -34,18 +34,18 @@ const IngredientDefinitionTool = () => {
     console.log(item);
 
     return (
-        <Offcanvas show={ingredientDefinitionTool.showTool} backdrop={false} scroll={true} onHide={() => dispatchHideIngredientToolAction()} placement='start'>
+        <Offcanvas show={ingredientDefinitionTool.showTool} backdrop={false} scroll={true} onHide={() => dispatchHideIngredientToolAction()} placement='top'>
             <Offcanvas.Header closeButton>
                 <Offcanvas.Title>Ingredient Definition Search Tool</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
                 <Container>
                     <Row className='d-flex justify-content-center'>
-                        <input type='text' style={{ width: '65%' }} onChange={e => setItem(e.target.value)}></input>
-                        <Button style={{ width: '25%' }} onClick={() => fetchIngredientDefinition()}>Search</Button>
+                        <input className="me-2" type='text' style={{ width: '30%' }} onChange={e => setItem(e.target.value)}></input>
+                        <Button style={{ width: '10%' }} onClick={() => fetchIngredientDefinition()}>Search</Button>
                     </Row>
-                    <Row className='d-flex justify-content-center mt-3'>
-                        <p style={{ width: '95%' }}>
+                    <Row className='d-flex justify-content-center mt-4'>
+                        <p style={{ width: '60%' }}>
                             {definition}
                         </p>
                     </Row>

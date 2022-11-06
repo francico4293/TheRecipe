@@ -7,6 +7,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import IngredientDefinitionTool from '../components/IngredientDefinitionTool';
 
 const Faq = () => {
     const faqItems = [
@@ -24,6 +25,7 @@ const Faq = () => {
     return (
         <>
             <Header/>
+            <IngredientDefinitionTool />
             <div id='faq-container'>
                 <h1>You've Got Questions. We've Got Answers.</h1>
                 <Accordion id='faq-items' style={{ width: '70vw', height: '20vh' }}>

@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Footer from '../components/Footer';
 import Spinner from 'react-bootstrap/Spinner';
+import IngredientDefinitionTool from '../components/IngredientDefinitionTool';
 import { userLoginActions } from '../actions/userActions';
 
 const Login = () => {
@@ -51,6 +52,7 @@ const Login = () => {
 
     return (
         <div id='login-page'>
+            <IngredientDefinitionTool />
             <Header/>
                 {getComponent()}
             <Footer/>
