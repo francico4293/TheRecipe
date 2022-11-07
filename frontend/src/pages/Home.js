@@ -29,7 +29,7 @@ const Home = () => {
     const [showNutritionFilter, setShowNutritionFilter] = useState(false);
     const [reachedPageBottom, setReachedPageBottom] = useState(false);
 
-    const dispatchRecipeResultsActions = () => {;
+    const dispatchRecipeResultsActions = () => {
         dispatch(recipeResultsActions(searchQuery));
     }
 
