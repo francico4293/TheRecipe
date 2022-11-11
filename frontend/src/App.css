@@ -25,7 +25,7 @@ body {
       linear-gradient(
       rgba(0, 0, 0, 0.25),
       rgba(0, 0, 0, 0.25)),
-      url('/Users/colinfrancis/Documents/CS361/the-recipe/frontend/public/images/landing-page-image.jpg');
+      url('/Users/colinfrancis/Documents/CS361/the-recipe-v3/frontend/public/images/landing-page-image.jpg');
   background-size: cover;
   background-position: center;
   box-shadow: 2px 2px 2px grey;
@@ -155,7 +155,7 @@ body {
   linear-gradient(
       rgba(0, 0, 0, 0.25),
       rgba(0, 0, 0, 0.25)),
-      url('/Users/colinfrancis/Documents/CS361/the-recipe/frontend/public/images/faq-background.jpg');
+      url('/Users/colinfrancis/Documents/CS361/the-recipe-v3/frontend/public/images/faq-background.jpg');
   background-size: cover;
   background-position: center;
   box-shadow: 2px 2px 2px grey;
@@ -281,7 +281,7 @@ body {
       linear-gradient(
       rgba(0, 0, 0, 0.25),
       rgba(0, 0, 0, 0.25)),
-      url('/Users/colinfrancis/Documents/CS361/personal-project/frontend/public/img/background-1.jpg');
+      url('/Users/colinfrancis/Documents/CS361/the-recipe-v3/frontend/public/images/background-1.jpg');
   background-size: cover;
   background-position: center;
   padding: 20px;
@@ -330,9 +330,23 @@ body {
 }
 
 /* Styles for cookbook page */
-#cookbook-container {
+#cookbook-profile-container {
+  height: 80vh;
+  min-height: 500px;
+  background-image: 
+      
+      url('/Users/colinfrancis/Documents/CS361/the-recipe-v3/frontend/public/images/cookbook.jpg');
+  background-size: cover;
+  background-position: center;
+  box-shadow: 2px 2px 2px grey;
+  position: relative;
+  color: white;
+  overflow: hidden;
+}
+
+#cookbook-results-container {
   width: 100vw;
-  height: 100vh;
+  min-height: 40vh;
   background-color: #f9f6f2;
   display: flex;
   flex-direction: column;
@@ -340,7 +354,7 @@ body {
   align-items: center;
 }
 
-.cookbook-results {
+#cookbook-results {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
