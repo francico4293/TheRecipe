@@ -86,6 +86,26 @@ export const userRecipeFavoriteActions = (id, recipeId, title, image) => {
     }
 }
 
+export const userRecipeDeleteActions = (userId, recipeId) => {
+    return async function(dispatch) {
+        dispatch({ type: USER_REQUEST_ATTEMPT });
+        
+        try {
+            const response = await fetch(`/api/users/${userId}/recipes/${recipeId}`, {
+                method: 'DELETE'
+            });
+
+            if (response.status === 200) {
+                const result = await response.json();
+                dispatch({ type: USER_REQUEST_SUCCESS, payload: result });
+                sessionStorage.setItem(DATA, JSON.stringify(result));
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    }
+}
+
 export const showIngredientToolAction = () => {
     return { type: SHOW_INGREDIENT_TOOL };
 }

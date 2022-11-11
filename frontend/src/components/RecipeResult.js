@@ -12,7 +12,10 @@ import {
     recipeTasteActions,
     similarRecipesActions
 } from '../actions/recipeActions';
-import { userRecipeFavoriteActions } from '../actions/userActions';
+import { 
+    userRecipeFavoriteActions, 
+    userRecipeDeleteActions 
+} from '../actions/userActions';
 
 const RecipeResult = ({ result, page }) => {
     const dispatch = useDispatch();
@@ -25,6 +28,11 @@ const RecipeResult = ({ result, page }) => {
 
     const dispatchRecipeFavoriteActions = () => {
         dispatch(userRecipeFavoriteActions(user.data.id, result.id, result.title, result.image));
+    }
+
+    const dispatchRecipeDeleteActions = () => {
+        setShowDeleteRecipePopover(false);
+        dispatch(userRecipeDeleteActions(user.data.id, result.recipeId));
     }
 
     const dispatchExploreRecipeActions = () => {
@@ -55,7 +63,7 @@ const RecipeResult = ({ result, page }) => {
                 Deleting a recipe will remove it from your cookbook. Are you sure?
             </Popover.Body>
             <Stack direction='horizontal' gap={2}>
-                <Button variant='outline-primary' className='ms-auto mb-2' onClick={() => setShowDeleteRecipePopover(false)}>Ok</Button>
+                <Button variant='outline-primary' className='ms-auto mb-2' onClick={() => dispatchRecipeDeleteActions()}>Ok</Button>
                 <Button variant='outline-secondary' className='mb-2 me-1' onClick={() => setShowDeleteRecipePopover(false)}>Cancel</Button>
             </Stack>
         </Popover>

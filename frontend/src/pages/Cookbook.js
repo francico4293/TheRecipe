@@ -12,7 +12,7 @@ const Cookbook = () => {
         <div id='cookbook-container'>
             <Header/>
             <IngredientDefinitionTool />
-            <div id='container'>
+            <div className='cookbook-results'>
                 {user.data.recipes.map((recipe, idx) => <RecipeResult result={recipe} page={'cookbook'} key={idx}/>)}
             </div>
             <Footer/>

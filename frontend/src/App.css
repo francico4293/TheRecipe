@@ -329,7 +329,7 @@ body {
   width: 65%;
 }
 
-/* Styles for cookbook */
+/* Styles for cookbook page */
 #cookbook-container {
   width: 100vw;
   height: 100vh;
@@ -337,12 +337,14 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
 }
 
-#container {
+.cookbook-results {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
+  width: 70vw;
 }
 
 /* Styles for footer */

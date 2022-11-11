@@ -18,7 +18,7 @@ const Header = () => {
     const logout = () => {
         sessionStorage.clear();
         sessionStorage.setItem(WELCOME, true);
-        window.location.reload(false);
+        window.location.href = '/';
     }
 
     const getNavLinks = () => {
