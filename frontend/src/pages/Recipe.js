@@ -14,7 +14,7 @@ const Recipe = () => {
     const similarRecipes = useSelector(state => state.similarRecipes);
 
     const getComponent = () => {
-        if (recipeCard.recipeCardLoading && recipeNutrition.recipeNutritionLoading && recipeTaste.recipeTasteLoading && similarRecipes.similarRecipesLoading) {
+        if (recipeCard.recipeCardLoading || recipeNutrition.recipeNutritionLoading || recipeTaste.recipeTasteLoading || similarRecipes.similarRecipesLoading) {
             return (
                 <Spinner animation='border' role='status' style={{ width: '150px', height: '150px', margin: 'auto', display: 'block' }}></Spinner>
             );
@@ -40,12 +40,12 @@ const Recipe = () => {
     }
 
     return (
-        <>
+        <div id="recipe-page">
             <Header />
             <IngredientDefinitionTool />
             {getComponent()}
             <Footer />
-        </>
+        </div>
     );
 }
 

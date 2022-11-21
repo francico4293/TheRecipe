@@ -292,6 +292,13 @@ body {
   min-width: 100vw;
 }
 
+#recipe-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 #recipe-container h2 {
   color: white;
   font-size: 4vw;
