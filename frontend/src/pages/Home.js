@@ -23,6 +23,7 @@ const Home = () => {
     const recipeResults = useSelector(state => state.recipeResults);
     const recipeResultsPage = useSelector(state => state.recipeResultsPage);
     const user = useSelector(state => state.user);
+    const { calories, protein, carbs, fats } = useSelector(state => state.recipeNutritionFilters);
 
     const [searchQuery, setSearchQuery] = useState('');
     const [showPopover, setShowPopover] = useState(false);
@@ -30,7 +31,7 @@ const Home = () => {
     const [reachedPageBottom, setReachedPageBottom] = useState(false);
 
     const dispatchRecipeResultsActions = () => {
-        dispatch(recipeResultsActions(searchQuery));
+        dispatch(recipeResultsActions(searchQuery, calories, protein, carbs, fats));
     }
 
     const clearSearchResults = () => {

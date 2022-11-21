@@ -5,5 +5,5 @@ export const USER_REQUEST_FAILURE = 'USER_REQUEST_FAILURE';
 export const SHOW_INGREDIENT_TOOL = 'SHOW_INGREDIENT_TOOL';
 export const HIDE_INGREDIENT_TOOL = 'HIDE_INGREDIENT_TOOL';
 
-export const DATA = 'data';
-export const LOGGED_IN = 'loggedIn';
+export const DATA = 'DATA';
+export const LOGGED_IN = 'LOGGED_IN';

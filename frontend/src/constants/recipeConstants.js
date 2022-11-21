@@ -17,5 +17,8 @@ export const RECIPE_TASTE_SUCCESS = 'RECIPE_TASTE_SUCCESS';
 export const SIMILAR_RECIPE_REQUEST = 'SIMILAR_RECIPE_REQUEST';
 export const SIMILAR_RECIPE_SUCCESS = 'SIMILAR_RECIPE_SUCCESS';
 
-export const RESULTS = 'results';
-export const PAGE = 'page';
+export const SET_NUTRITION_FILTERS = 'SET_NUTRITION_FILTERS';
+
+export const RESULTS = 'RESULTS';
+export const PAGE = 'PAGE';
+export const NUTRITION_FILTERS = 'NUTRITION_FILTERS';

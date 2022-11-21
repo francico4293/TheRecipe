@@ -11,7 +11,8 @@ import {
     RECIPE_TASTE_REQUEST,
     RECIPE_TASTE_SUCCESS,
     SIMILAR_RECIPE_REQUEST,
-    SIMILAR_RECIPE_SUCCESS
+    SIMILAR_RECIPE_SUCCESS,
+    SET_NUTRITION_FILTERS
 } from '../constants/recipeConstants';
 
 export const recipeResultsReducer = (state = { resultsLoading: false, results: [] }, action) => {
@@ -75,6 +76,20 @@ export const similarRecipesReducer = (state = { similarRecipesLoading: false, re
             return { similarRecipesLoading: true, recipes: [] };
         case SIMILAR_RECIPE_SUCCESS:
             return { similarRecipesLoading: false, recipes: action.payload };
+        default:
+            return state;
+    }
+}
+
+export const recipeNutritionFiltersReducer = (state = { calories: '', protein: '', carbs: '', fats: '' }, action) => {
+    switch (action.type) {
+        case SET_NUTRITION_FILTERS:
+            return { 
+                calories: action.payload.calories, 
+                protein: action.payload.protein, 
+                carbs: action.payload.carbs, 
+                fats: action.payload.fats 
+            };
         default:
             return state;
     }

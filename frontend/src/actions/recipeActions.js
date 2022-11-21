@@ -13,18 +13,35 @@ import {
     RECIPE_TASTE_REQUEST,
     RECIPE_TASTE_SUCCESS,
     SIMILAR_RECIPE_REQUEST,
-    SIMILAR_RECIPE_SUCCESS
+    SIMILAR_RECIPE_SUCCESS,
+    SET_NUTRITION_FILTERS
 } from '../constants/recipeConstants';
 
-export const recipeResultsActions = (searchQuery) => {
+export const recipeResultsActions = (searchQuery, calories, protein, carbs, fats) => {
     return async function(dispatch) {
         dispatch({ type: RECIPE_RESULTS_REQUEST });
 
         try {
-            const response = await fetch(
-                `${process.env.REACT_APP_SPOONACULAR_ROOT}/recipes/complexSearch` + 
+            let url = `${process.env.REACT_APP_SPOONACULAR_ROOT}/recipes/complexSearch` + 
                 `?apiKey=${process.env.REACT_APP_API_KEY}&number=100&query=${searchQuery}`
-            );
+
+            if (calories.length > 0) {
+                url = url + `&maxCalories=${calories}`;
+            }
+
+            if (protein.length > 0) {
+                url = url + `&maxProtein=${protein}`;
+            }
+
+            if (carbs.length > 0) {
+                url = url + `&maxCarbs=${carbs}`;
+            }
+
+            if (fats.length > 0) {
+                url = url + `&maxFat=${fats}`;
+            }
+
+            const response = await fetch(url);
             
             if (response.status === 200) {
                 const responseResults = await response.json();
@@ -126,4 +143,11 @@ export const similarRecipesActions = (id) => {
 
         }
     }
+}
+
+export const recipeNutritionFiltersActions = (calories, protein, carbs, fats) => {
+    return ({ 
+        type: SET_NUTRITION_FILTERS, 
+        payload: { calories, protein, carbs, fats } 
+    });
 }

@@ -11,13 +11,14 @@ import {
     recipeCardReducer,
     recipeNutritionReducer,
     recipeTasteReducer,
-    similarRecipesReducer
+    similarRecipesReducer,
+    recipeNutritionFiltersReducer
 } from './reducers/recipeReducers';
 import { 
     ingredientDefinitionToolReducer, 
     userReducer 
 } from './reducers/userReducers';
-import { RESULTS, PAGE } from './constants/recipeConstants'
+import { RESULTS, PAGE, NUTRITION_FILTERS } from './constants/recipeConstants'
 import { DATA, LOGGED_IN } from './constants/userConstants';
 
 const reducer = combineReducers({
@@ -28,7 +29,8 @@ const reducer = combineReducers({
     recipeNutrition: recipeNutritionReducer,
     recipeTaste: recipeTasteReducer,
     similarRecipes: similarRecipesReducer,
-    ingredientDefinitionTool: ingredientDefinitionToolReducer
+    ingredientDefinitionTool: ingredientDefinitionToolReducer,
+    recipeNutritionFilters: recipeNutritionFiltersReducer
 });
 
 const resultsFromStorage = sessionStorage.getItem(RESULTS) 
@@ -47,10 +49,15 @@ const userLoggedInFromStorage = sessionStorage.getItem(LOGGED_IN)
     ? sessionStorage.getItem(LOGGED_IN) === 'true' 
     : false;
 
+const nutritionFiltersFromStorage = sessionStorage.getItem(NUTRITION_FILTERS)
+    ? JSON.parse(sessionStorage.getItem(NUTRITION_FILTERS))
+    : { calories: "", protein: "", carbs: "", fats: "" };
+
 const initialState = {
     recipeResults: { resultsLoading: false, results: resultsFromStorage },
     recipeResultsPage: { pageLoading: false, page: pageFromStorage },
-    user: { userLoading: false, userLoggedIn: userLoggedInFromStorage, data: dataFromStorage }
+    user: { userLoading: false, userLoggedIn: userLoggedInFromStorage, data: dataFromStorage },
+    recipeNutritionFilters: { ...nutritionFiltersFromStorage } 
 };
 
 const store = createStore(
