@@ -8,7 +8,7 @@ import {
     HIDE_INGREDIENT_TOOL
 } from '../constants/userConstants';
 
-export const userSignupActions = (firstName, lastName, email, password, navigate) => {
+export const userSignupActions = (userInfo, navigate) => {
     return async function(dispatch) {
         dispatch({ type: USER_REQUEST_ATTEMPT });
 
@@ -18,7 +18,12 @@ export const userSignupActions = (firstName, lastName, email, password, navigate
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ firstName, lastName, email, password })
+                body: JSON.stringify({ 
+                    firstName: userInfo.firstName, 
+                    lastName: userInfo.lastName, 
+                    email: userInfo.email, 
+                    password: userInfo.password
+                })
             });
 
             if (response.status === 201) {

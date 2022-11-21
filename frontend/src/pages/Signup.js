@@ -25,7 +25,10 @@ const Signup = () => {
 
     const dispatchUserActions = () => {
         if (password === confirmPassword) {
-            dispatch(userSignupActions(firstName, lastName, email, password, navigate));
+            dispatch(userSignupActions(
+                { firstName, lastName, email, password }, 
+                navigate
+            ));
         } else {
             setPasswordMismatch(true);
         }

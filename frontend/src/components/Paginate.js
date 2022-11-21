@@ -14,12 +14,14 @@ const Paginate = () => {
 
     const dispatchRecipeResultsPageActions = (page) => {
         dispatch(recipeResultsPageRequestAction());
+        // simulated lag in new page request
         setTimeout(() => {
             dispatch(recipeResultsPageSuccessAction(page));
             window.scrollTo(0, 1000);
         }, 500);
     }
 
+    // number of pages based on 10 results per page
     const pages = recipeResults.results.length / 10;
 
     const items = [];
