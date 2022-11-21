@@ -26,15 +26,18 @@ const RecipeResult = ({ result, page }) => {
     const [showPopover, setShowPopover] = useState(false);
     const [showDeleteRecipePopover, setShowDeleteRecipePopover] = useState(false);
 
+    // redux actions dispatched when user favorites a recipe in recipe results page
     const dispatchRecipeFavoriteActions = () => {
         dispatch(userRecipeFavoriteActions(user.data.id, result.id, result.title, result.image));
     }
 
+    // redux actions dispatched when used clicks "delete" on recipe card in cookbook
     const dispatchRecipeDeleteActions = () => {
         setShowDeleteRecipePopover(false);
         dispatch(userRecipeDeleteActions(user.data.id, result.recipeId));
     }
 
+    // redux actions dispatched when used clicks "explore" on recipe card in recipe results page
     const dispatchExploreRecipeActions = () => {
         navigate(`/recipes/${result.id}`)
         dispatch(recipeCardActions(result.id));
@@ -43,6 +46,7 @@ const RecipeResult = ({ result, page }) => {
         dispatch(similarRecipesActions(result.id));
     }
 
+    // show warning to user when they favorite a recipe
     const favoriteRecipePopover = (
         <Popover>
             <Popover.Header as="h3">Warning!</Popover.Header>
@@ -56,6 +60,7 @@ const RecipeResult = ({ result, page }) => {
         </Popover>
     );
 
+    // show warning to user when they delete a recipe
     const deleteRecipePopover = (
         <Popover>
             <Popover.Header as="h3">Warning!</Popover.Header>
@@ -70,6 +75,7 @@ const RecipeResult = ({ result, page }) => {
     );
 
     const getIcon = () => {
+        // on home page, show empty heart if recipe is not favorited. Otherwise, show filled heart
         if (page === 'home') {
             return (
                 user.data.recipes && user.data.recipes.map(recipe => recipe.recipeId).includes(result.id) 
@@ -80,6 +86,7 @@ const RecipeResult = ({ result, page }) => {
                                 </OverlayTrigger>
                             )
             );
+        // recipes on cookbook page are favorited, just show empty trash to delete recipe from cookbook
         } else if (page === 'cookbook') {
             return (
                 <OverlayTrigger show={showDeleteRecipePopover} trigger="click" placement="top" overlay={deleteRecipePopover}>
@@ -88,7 +95,8 @@ const RecipeResult = ({ result, page }) => {
             );
         }
     }
-
+    
+    // only show heart icons if user is a logged in member
     const getComponent = () => {
         if (user.userLoggedIn) {
             return (

@@ -13,6 +13,7 @@ const Recipe = () => {
     const recipeTaste = useSelector(state => state.recipeTaste);
     const similarRecipes = useSelector(state => state.similarRecipes);
 
+    // display loading spinner while all spoonacular API requests are loading
     const getComponent = () => {
         if (recipeCard.recipeCardLoading || recipeNutrition.recipeNutritionLoading || recipeTaste.recipeTasteLoading || similarRecipes.similarRecipesLoading) {
             return (

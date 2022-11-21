@@ -24,50 +24,28 @@ import {
 /**
  * Creates an asynchronous function that dispatches a recipe results request action, a recipe results success action 
  * if the request is successful, and a recipe results failure action if the request fails.
- * @param {string} searchQuery - The food-related keyword to fetch recipes for.
- * @param {string} calories - The maximum number of calories in each recipe.
- * @param {string} protein - The maximum amount of protein in each recipe in grams.
- * @param {string} carbs - The maximum amount of carbohydrates in each recipe in grams.
- * @param {string} fats - The maximum amount of fat in each recipe in grams.
+ * @param {string} url - The URL used as the target for an HTTP GET request to fetch recipes based on a specific food
+ *      related keyword and nutrition filters.
  * @returns - An asynchronous function that dispatches a recipe results request action, a recipe results success action
  *      if the request is successful, and a recipe results failure action is the request fails.
  */
-export const recipeResultsActions = (searchQuery, calories, protein, carbs, fats) => {
+export const recipeResultsActions = (url) => {
     return async function(dispatch) {
         dispatch({ type: RECIPE_RESULTS_REQUEST });
 
         try {
-            let url = `${process.env.REACT_APP_SPOONACULAR_ROOT}/recipes/complexSearch` + 
-                `?apiKey=${process.env.REACT_APP_API_KEY}&number=100&query=${searchQuery}`
-
-            if (calories.length > 0) {
-                url = url + `&maxCalories=${calories}`;
-            }
-
-            if (protein.length > 0) {
-                url = url + `&maxProtein=${protein}`;
-            }
-
-            if (carbs.length > 0) {
-                url = url + `&maxCarbs=${carbs}`;
-            }
-
-            if (fats.length > 0) {
-                url = url + `&maxFat=${fats}`;
-            }
-
+            // HTTP GET request to fetch recipe results
             const response = await fetch(url);
             
             if (response.status === 200) {
                 const responseResults = await response.json();
-                dispatch({ type: RECIPE_RESULTS_SUCCESS, payload: responseResults.results });
                 sessionStorage.setItem(RESULTS, JSON.stringify(responseResults.results));
+                dispatch({ type: RECIPE_RESULTS_SUCCESS, payload: responseResults.results });
             } else {
-                throw new Error;
+                throw new Error();
             }
         } catch (err) {
             dispatch({ type: RECIPE_RESULTS_FAILURE });
-            alert("Failed to fetch recipe results");
         }
     }
 }
@@ -102,6 +80,7 @@ export const recipeCardActions = (id) => {
         dispatch({ type: RECIPE_CARD_REQUEST });
 
         try {
+            // HTTP GET request to fetch a recipe information card
             const response = await fetch(
                 `${process.env.REACT_APP_SPOONACULAR_ROOT}/recipes/${id}/card` +
                 `?apiKey=${process.env.REACT_APP_API_KEY}`
@@ -111,7 +90,7 @@ export const recipeCardActions = (id) => {
                 const result = await response.json();
                 dispatch({ type: RECIPE_CARD_SUCCESS, payload: result.url });
             } else {
-                throw new Error;
+                throw new Error();
             }
         } catch (err) {
             dispatch({ type: RECIPE_CARD_FAILURE });
@@ -131,6 +110,7 @@ export const recipeNutritionActions = (id) => {
         dispatch({ type: RECIPE_NUTRITION_REQUEST });
 
         try {
+            // HTTP GET request to fetch a recipe nutrition label
             const response = await fetch(
                 `${process.env.REACT_APP_SPOONACULAR_ROOT}/recipes/${id}/nutritionLabel.png` +
                 `?apiKey=${process.env.REACT_APP_API_KEY}`
@@ -140,7 +120,7 @@ export const recipeNutritionActions = (id) => {
                 const blob = await response.blob();
                 dispatch({ type: RECIPE_NUTRITION_SUCCESS, payload: URL.createObjectURL(blob) });
             } else {
-                throw new Error;
+                throw new Error();
             }
         } catch (err) {
             dispatch({ type: RECIPE_NUTRITION_FAILURE });
@@ -160,6 +140,7 @@ export const recipeTasteActions = (id) => {
         dispatch({ type: RECIPE_TASTE_REQUEST });
 
         try {
+            // HTTP GET request to fetch a recipe taste widget JSON object
             const response = await fetch(
                 `${process.env.REACT_APP_SPOONACULAR_ROOT}/recipes/${id}/tasteWidget.json` + 
                 `?apiKey=${process.env.REACT_APP_API_KEY}`
@@ -169,7 +150,7 @@ export const recipeTasteActions = (id) => {
                 const result = await response.json();
                 dispatch({ type: RECIPE_TASTE_SUCCESS, payload: result });
             } else {
-                throw new Error;
+                throw new Error();
             }
         } catch (err) {
             dispatch({ type: RECIPE_TASTE_FAILURE });
@@ -189,6 +170,7 @@ export const similarRecipesActions = (id) => {
         dispatch({ type: SIMILAR_RECIPE_REQUEST });
 
         try {
+            // HTTP GET request to fetch similar recipes
             const response = await fetch(
                 `${process.env.REACT_APP_SPOONACULAR_ROOT}/recipes/${id}/similar` +
                 `?apiKey=${process.env.REACT_APP_API_KEY}&number=4`
@@ -198,7 +180,7 @@ export const similarRecipesActions = (id) => {
                 const result = await response.json();
                 dispatch({ type: SIMILAR_RECIPE_SUCCESS, payload: result });
             } else {
-                throw new Error;
+                throw new Error();
             }
         } catch (err) {
             dispatch({ type: SIMILAR_RECIPE_FAILURE });

@@ -19,6 +19,12 @@ import {
     SET_NUTRITION_FILTERS
 } from '../constants/recipeConstants';
 
+/**
+ * Updates recipe results state based on an action that was triggered from client interaction.
+ * @param {object} state - The initial recipe results state. 
+ * @param {object} action - The recipe results action that was triggered.
+ * @returns - An object representing the new recipe results state.
+ */
 export const recipeResultsReducer = (state = { resultsLoading: false, results: [] }, action) => {
     switch (action.type) {
         case RECIPE_RESULTS_REQUEST:
@@ -32,6 +38,12 @@ export const recipeResultsReducer = (state = { resultsLoading: false, results: [
     }
 }
 
+/**
+ * Updates recipe results page state based on an action that was triggered from client interaction.
+ * @param {object} state - The initial recipe results page state.
+ * @param {object} action - The recipe results page action that was triggered.
+ * @returns - An object representing the new recipe results page state.
+ */
 export const recipeResultsPageReducer = (state = { pageLoading: false, page: 0 }, action) => {
     switch (action.type) {
         case RECIPE_PAGE_CHANGE_REQUEST:
@@ -43,6 +55,12 @@ export const recipeResultsPageReducer = (state = { pageLoading: false, page: 0 }
     }
 }
 
+/**
+ * Updates recipe card state based on an action that was triggered from client interaction.
+ * @param {object} state - The initial recipe card state.
+ * @param {object} action - The recipe card action that was triggered.
+ * @returns - An object representing the new recipe card state.
+ */
 export const recipeCardReducer = (state = { recipeCardLoading: false, card: '' }, action) => {
     switch (action.type) {
         case RECIPE_CARD_REQUEST:
@@ -56,6 +74,12 @@ export const recipeCardReducer = (state = { recipeCardLoading: false, card: '' }
     }
 }
 
+/**
+ * Updates recipe nutrition state based on an action that was triggered from client interaction.
+ * @param {object} state - The initial recipe nutrition state. 
+ * @param {object} action - The recipe nutrition action that was triggered.
+ * @returns - An object representing the new recipe nutrition state.
+ */
 export const recipeNutritionReducer = (state = { recipeNutritionLoading: false, nutrition: '' }, action) => {
     switch (action.type) {
         case RECIPE_NUTRITION_REQUEST:
@@ -69,6 +93,12 @@ export const recipeNutritionReducer = (state = { recipeNutritionLoading: false, 
     }
 }
 
+/**
+ * Updates recipe taste state based on an action that was triggered from client interaction.
+ * @param {object} state - The initial recipe taste state. 
+ * @param {object} action - The recipe taste action that was triggered.
+ * @returns - An object representing the new recipe taste state.
+ */
 export const recipeTasteReducer = (state = { recipeTasteLoading: false, taste: '' }, action) => {
     switch (action.type) {
         case RECIPE_TASTE_REQUEST:
@@ -82,6 +112,12 @@ export const recipeTasteReducer = (state = { recipeTasteLoading: false, taste: '
     }
 }
 
+/**
+ * Updates similar recipes state based on an action that was triggered from client interaction.
+ * @param {object} state - The initial similar recipes state. 
+ * @param {object} action - The similar recipes action that was triggered.
+ * @returns - An object representing the new similar recipes state.
+ */
 export const similarRecipesReducer = (state = { similarRecipesLoading: false, recipes: [] }, action) => {
     switch (action.type) {
         case SIMILAR_RECIPE_REQUEST:
@@ -95,6 +131,12 @@ export const similarRecipesReducer = (state = { similarRecipesLoading: false, re
     }
 }
 
+/**
+ * Updates recipe nutrition filters state based on an action that was triggered from client interaction.
+ * @param {object} state - The initial recipe nutrition filters state. 
+ * @param {object} action - The recipe nutrition filters action that was triggered.
+ * @returns - An object representing the new recipe nutrition filters state.
+ */
 export const recipeNutritionFiltersReducer = (state = { calories: '', protein: '', carbs: '', fats: '' }, action) => {
     switch (action.type) {
         case SET_NUTRITION_FILTERS:

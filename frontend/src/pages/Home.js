@@ -30,8 +30,34 @@ const Home = () => {
     const [showNutritionFilter, setShowNutritionFilter] = useState(false);
     const [reachedPageBottom, setReachedPageBottom] = useState(false);
 
+    const configureRecipeResultsRequestUrl = () => {
+        let url = `${process.env.REACT_APP_SPOONACULAR_ROOT}/recipes/complexSearch` + 
+                `?apiKey=${process.env.REACT_APP_API_KEY}&number=100&query=${searchQuery}`;
+
+        // if calories, protein, carbs, or fats are an empty string, then the filter wasn't set
+
+        if (calories.length > 0) {
+            url = url + `&maxCalories=${calories}`;
+        }
+
+        if (protein.length > 0) {
+            url = url + `&maxProtein=${protein}`;
+        }
+
+        if (carbs.length > 0) {
+            url = url + `&maxCarbs=${carbs}`;
+        }
+
+        if (fats.length > 0) {
+            url = url + `&maxFat=${fats}`;
+        }
+
+        return url;
+    }
+
     const dispatchRecipeResultsActions = () => {
-        dispatch(recipeResultsActions(searchQuery, calories, protein, carbs, fats));
+        const recipeResultsRequestUrl = configureRecipeResultsRequestUrl();
+        dispatch(recipeResultsActions(recipeResultsRequestUrl));
     }
 
     const clearSearchResults = () => {
@@ -60,7 +86,7 @@ const Home = () => {
             </Stack>
         </Popover>
     );
-
+    
     const showWelcomeModal = () => {
         sessionStorage.setItem(WELCOME, true);
         return <Welcome />;
@@ -71,11 +97,10 @@ const Home = () => {
         const clientHeight = document.scrollingElement.clientHeight;
         const scrollTop = document.scrollingElement.scrollTop;
 
-        if (scrollTop + clientHeight === scrollHeight) {
-            setReachedPageBottom(true);
-        }
+        (scrollTop + clientHeight === scrollHeight) && setReachedPageBottom(true);
     });
 
+    // startIdx and endIdx used in creating paginated recipe results
     const endIdx = (recipeResultsPage.page + 1) * 10;
     const startIdx = endIdx - 10;
 

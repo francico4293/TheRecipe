@@ -21,6 +21,7 @@ const Header = () => {
         window.location.href = '/';
     }
 
+    // swap out login and signup navlinks for cookbook and logout when user logs in
     const getNavLinks = () => {
         if (user.userLoggedIn) {
             return (
