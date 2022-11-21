@@ -14,10 +14,12 @@ const IngredientDefinitionTool = () => {
 
     const ingredientDefinitionTool = useSelector(state => state.ingredientDefinitionTool);
 
+    // redux actions dispatched when user hides a ingredient definition tool
     const dispatchHideIngredientToolAction = () => {
         dispatch(hideIngredientToolAction());
     }
 
+    // make HTTP GET request to microservice using user specified item as url query parameter
     const fetchIngredientDefinition = async () => {
         try {
             const response = await fetch(`/ingredientinfo?item=${item}`);

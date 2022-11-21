@@ -34,7 +34,6 @@ export const recipeResultsActions = (url) => {
         dispatch({ type: RECIPE_RESULTS_REQUEST });
 
         try {
-            // HTTP GET request to fetch recipe results
             const response = await fetch(url);
             
             if (response.status === 200) {
@@ -80,7 +79,6 @@ export const recipeCardActions = (id) => {
         dispatch({ type: RECIPE_CARD_REQUEST });
 
         try {
-            // HTTP GET request to fetch a recipe information card
             const response = await fetch(
                 `${process.env.REACT_APP_SPOONACULAR_ROOT}/recipes/${id}/card` +
                 `?apiKey=${process.env.REACT_APP_API_KEY}`
@@ -110,7 +108,6 @@ export const recipeNutritionActions = (id) => {
         dispatch({ type: RECIPE_NUTRITION_REQUEST });
 
         try {
-            // HTTP GET request to fetch a recipe nutrition label
             const response = await fetch(
                 `${process.env.REACT_APP_SPOONACULAR_ROOT}/recipes/${id}/nutritionLabel.png` +
                 `?apiKey=${process.env.REACT_APP_API_KEY}`
@@ -140,7 +137,6 @@ export const recipeTasteActions = (id) => {
         dispatch({ type: RECIPE_TASTE_REQUEST });
 
         try {
-            // HTTP GET request to fetch a recipe taste widget JSON object
             const response = await fetch(
                 `${process.env.REACT_APP_SPOONACULAR_ROOT}/recipes/${id}/tasteWidget.json` + 
                 `?apiKey=${process.env.REACT_APP_API_KEY}`
@@ -170,7 +166,6 @@ export const similarRecipesActions = (id) => {
         dispatch({ type: SIMILAR_RECIPE_REQUEST });
 
         try {
-            // HTTP GET request to fetch similar recipes
             const response = await fetch(
                 `${process.env.REACT_APP_SPOONACULAR_ROOT}/recipes/${id}/similar` +
                 `?apiKey=${process.env.REACT_APP_API_KEY}&number=4`

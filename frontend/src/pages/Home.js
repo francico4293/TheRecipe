@@ -55,6 +55,7 @@ const Home = () => {
         return url;
     }
 
+    // redux actions dispatched when user performs recipe results search
     const dispatchRecipeResultsActions = () => {
         const recipeResultsRequestUrl = configureRecipeResultsRequestUrl();
         dispatch(recipeResultsActions(recipeResultsRequestUrl));
@@ -73,6 +74,7 @@ const Home = () => {
         </Tooltip>
     );
 
+    // warn user when clear search results button is clicked
     const popover = (
         <Popover>
             <Popover.Header as="h3">Warning!</Popover.Header>
@@ -88,10 +90,12 @@ const Home = () => {
     );
     
     const showWelcomeModal = () => {
+        // set flag in session storage so welcome modal is only shown once per session
         sessionStorage.setItem(WELCOME, true);
         return <Welcome />;
     }
 
+    // event listener used to trigger welcome modal display
     window.addEventListener('scroll', () => {
         const scrollHeight = document.scrollingElement.scrollHeight;
         const clientHeight = document.scrollingElement.clientHeight;
