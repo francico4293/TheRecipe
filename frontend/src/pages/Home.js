@@ -55,7 +55,6 @@ const Home = () => {
         return url;
     }
 
-    // redux actions dispatched when user performs recipe results search
     const dispatchRecipeResultsActions = () => {
         const recipeResultsRequestUrl = configureRecipeResultsRequestUrl();
         dispatch(recipeResultsActions(recipeResultsRequestUrl));

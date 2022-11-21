@@ -14,7 +14,6 @@ const IngredientDefinitionTool = () => {
 
     const ingredientDefinitionTool = useSelector(state => state.ingredientDefinitionTool);
 
-    // redux actions dispatched when user hides a ingredient definition tool
     const dispatchHideIngredientToolAction = () => {
         dispatch(hideIngredientToolAction());
     }

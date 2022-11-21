@@ -26,18 +26,15 @@ const RecipeResult = ({ result, page }) => {
     const [showPopover, setShowPopover] = useState(false);
     const [showDeleteRecipePopover, setShowDeleteRecipePopover] = useState(false);
 
-    // redux actions dispatched when user favorites a recipe in recipe results page
     const dispatchRecipeFavoriteActions = () => {
         dispatch(userRecipeFavoriteActions(user.data.id, result.id, result.title, result.image));
     }
 
-    // redux actions dispatched when used clicks "delete" on recipe card in cookbook
     const dispatchRecipeDeleteActions = () => {
         setShowDeleteRecipePopover(false);
         dispatch(userRecipeDeleteActions(user.data.id, result.recipeId));
     }
 
-    // redux actions dispatched when used clicks "explore" on recipe card in recipe results page
     const dispatchExploreRecipeActions = () => {
         navigate(`/recipes/${result.id}`)
         dispatch(recipeCardActions(result.id));

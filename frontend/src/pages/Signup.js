@@ -11,8 +11,6 @@ import Warning from '../components/Warning';
 import IngredientDefinitionTool from '../components/IngredientDefinitionTool';
 
 const Signup = () => {
-    const passwordMismatchMessage = "The passwords you entered don't match.";
-
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -33,6 +31,7 @@ const Signup = () => {
         }
     }
 
+    // show loading spinner while signup request completes
     const getSignupComponent = () => {
         if (user.userLoading) {
             return (
@@ -77,7 +76,7 @@ const Signup = () => {
         <div id='signup-page'>
             <Header/>
             <IngredientDefinitionTool />
-            {passwordMismatch && <Warning message={passwordMismatchMessage} setShow={setPasswordMismatch}/>}
+            {passwordMismatch && <Warning message={"The passwords you entered don't match."} setShow={setPasswordMismatch}/>}
             {getSignupComponent()}
             <Footer/>
         </div>
