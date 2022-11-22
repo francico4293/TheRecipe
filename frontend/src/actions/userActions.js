@@ -134,9 +134,11 @@ export const userInfoUpdateActions = (userId, updateObject) => {
                 const result = await response.json();
                 dispatch({ type: USER_REQUEST_SUCCESS, payload: result });
                 sessionStorage.setItem(DATA, JSON.stringify(result));
+            } else {
+                throw new Error();
             }
         } catch (err) {
-
+            dispatch({ type: USER_REQUEST_FAILURE });
         }
     }
 }

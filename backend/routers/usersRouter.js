@@ -13,7 +13,10 @@ const {
 // instantiate new Router object
 const router = express.Router();
 
-router.post('/signup', sanitizeNames, async (req, res) => {
+/**
+ * Handler for POST /api/users/signup endpoint. This endpoint allows users to signup and create a profile.
+ */
+router.post('/signup', sanitizeNames, async (req, res, next) => {
     try {
         const user = await createUser(req.body);
         if (user === null) {
@@ -30,12 +33,14 @@ router.post('/signup', sanitizeNames, async (req, res) => {
             }
         );
     } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Request failed' });
+        next(err);
     }
 });
 
-router.post('/login', async (req, res) => {
+/**
+ * Handler for POST /api/users/login endpoint. This endpoint allows users with a profile to login.
+ */
+router.post('/login', async (req, res, next) => {
     try {
         const user = await findUserByCredentials(req.body.email, req.body.password);
         if (user === null) {
@@ -52,14 +57,17 @@ router.post('/login', async (req, res) => {
             }
         );
     } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Request failed' });
+        next(err);
     }
 });
 
-router.post('/:id', async (req, res) => {
+/**
+ * Handler for POST /api/users/:userId endpoint. This endpoint allows users to add a favorited recipe to their
+ * cookbook.
+ */
+router.post('/:userId', async (req, res, next) => {
     try {
-        const user = await appendToUserRecipes(req.params.id, req.body);
+        const user = await appendToUserRecipes(req.params.userId, req.body);
         res.status(200).json(
             {
                 id: user._id, 
@@ -70,14 +78,16 @@ router.post('/:id', async (req, res) => {
             }
         );
     } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Request failed' });
+        next(err);
     }
 });
 
-router.patch('/:id', async (req, res) => {
+/**
+ * Handler for PATCH /api/users/:userId endpoint. This endpoint allows users to update their profile information.
+ */
+router.patch('/:userId', async (req, res, next) => {
     try {
-        const user = await updateUserInfo(req.params.id, req.body.firstName, req.body.lastName, req.body.email);
+        const user = await updateUserInfo(req.params.userId, req.body.firstName, req.body.lastName, req.body.email);
         res.status(200).json(
             {
                 id: user._id, 
@@ -88,12 +98,15 @@ router.patch('/:id', async (req, res) => {
             }
         );
     } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Request failed' });
+        next(err);
     }
 });
 
-router.delete('/:userId/recipes/:recipeId', async (req, res) => {
+/**
+ * Handler for DELETE /api/users/:userId/recipes/:recipeId endpoint. This endpoint allows users to remove a favorited
+ * recipe from their cookbook.
+ */
+router.delete('/:userId/recipes/:recipeId', async (req, res, next) => {
     try {
         const user = await removeRecipeFromUserRecipes(req.params.userId, req.params.recipeId);
         res.status(200).json(
@@ -106,7 +119,7 @@ router.delete('/:userId/recipes/:recipeId', async (req, res) => {
             }
         );
     } catch (err) {
-        console.error(err);
+        next(err);
     }
 });
 
