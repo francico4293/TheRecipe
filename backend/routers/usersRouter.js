@@ -7,7 +7,7 @@ const {
     findUserByCredentials,
     appendToUserRecipes,
     removeRecipeFromUserRecipes
-} = require('../controllers/users');
+} = require('../controllers/usersController');
 
 // instantiate new Router object
 const router = express.Router();

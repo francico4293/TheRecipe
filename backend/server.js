@@ -2,7 +2,7 @@
 
 // imports
 const express = require('express');
-const userRouter = require('./routers/users');
+const usersRouter = require('./routers/users');
 require('./database/dbcon');
 
 // initialize new express application
@@ -12,7 +12,7 @@ const app = express();
 app.use(express.json());
 
 // routers
-app.use('/api/users', userRouter);
+app.use('/api/users', usersRouter);
 
 // set server to listen on PORT
 const PORT = 4000;

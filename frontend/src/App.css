@@ -340,8 +340,9 @@ body {
 #cookbook-profile-container {
   height: 80vh;
   min-height: 500px;
-  background-image: 
-      
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.25)),
       url('/Users/colinfrancis/Documents/CS361/the-recipe-v3/frontend/public/images/cookbook.jpg');
   background-size: cover;
   background-position: center;
@@ -349,6 +350,9 @@ body {
   position: relative;
   color: white;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #cookbook-results-container {
@@ -366,6 +370,37 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   width: 70vw;
+}
+
+#profile-container {
+  background-color: white;
+  width: 1000px;
+  height: 600px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+}
+
+#cookbook-profile-container h1 {
+  font-size: 50px;
+  font-weight: 500;
+  padding: 20px;
+}
+
+#profile-container img {
+  width: 50%;
+  height: 100%;
+  margin: 20px;
+  object-fit: contain;
+}
+
+#profile-table {
+  width: 50%;
+  margin: 20px;
+}
+
+.fa-pen-to-square, .fa-check {
+  cursor: pointer;
 }
 
 /* Styles for footer */

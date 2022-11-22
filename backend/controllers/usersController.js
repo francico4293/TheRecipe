@@ -1,6 +1,6 @@
 'use strict';
 //imports
-const User = require('../models/users');
+const User = require('../models/usersModel');
 const bcryptjs = require('bcryptjs');
 
 const createUser = async (userData) => {
