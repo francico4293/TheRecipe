@@ -22,6 +22,7 @@ const Login = () => {
         dispatch(userLoginActions(email, password, navigate));
     }
 
+    // show loading spinner while signup request completes
     const getComponent = () => {
         if (user.userLoading) {
             return (

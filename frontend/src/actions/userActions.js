@@ -33,10 +33,10 @@ export const userSignupActions = (userInfo, navigate) => {
                 sessionStorage.setItem(LOGGED_IN, true);
                 navigate('/');
             } else {
-                dispatch({ type: USER_REQUEST_FAILURE });
+                throw new Error();
             }
         } catch (err) {
-            console.error(err);
+            dispatch({ type: USER_REQUEST_FAILURE });
         }
     }
 }
@@ -60,9 +60,11 @@ export const userLoginActions = (email, password, navigate) => {
                 sessionStorage.setItem(DATA, JSON.stringify(result));
                 sessionStorage.setItem(LOGGED_IN, true);
                 navigate('/');
+            } else {
+                throw new Error();
             }
         } catch (err) {
-            console.error(err);
+            dispatch({ type: USER_REQUEST_FAILURE });
         }
     }
 }
@@ -84,9 +86,11 @@ export const userRecipeFavoriteActions = (id, recipeId, title, image) => {
                 const result = await response.json();
                 dispatch({ type: USER_REQUEST_SUCCESS, payload: result });
                 sessionStorage.setItem(DATA, JSON.stringify(result));
+            } else {
+                throw new Error();
             }
         } catch (err) {
-            console.error(err);
+            dispatch({ type: USER_REQUEST_FAILURE });
         }
     }
 }
@@ -104,9 +108,11 @@ export const userRecipeDeleteActions = (userId, recipeId) => {
                 const result = await response.json();
                 dispatch({ type: USER_REQUEST_SUCCESS, payload: result });
                 sessionStorage.setItem(DATA, JSON.stringify(result));
+            } else {
+                throw new Error();
             }
         } catch (err) {
-            console.error(err);
+            dispatch({ type: USER_REQUEST_FAILURE });
         }
     }
 }
