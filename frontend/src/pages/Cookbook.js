@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import RecipeResult from '../components/RecipeResult';
 import IngredientDefinitionTool from '../components/IngredientDefinitionTool';
 import Table from 'react-bootstrap/Table';
+import { userInfoUpdateActions } from '../actions/userActions';
 
 const Cookbook = () => {
+    const dispatch = useDispatch();
+
     const user = useSelector(state => state.user);
 
     const [firstName, setFirstName] = useState(user.data.firstName);
@@ -16,6 +19,17 @@ const Cookbook = () => {
     const [editFirstName, setEditFirstName] = useState(false);
     const [editLastName, setEditLastName] = useState(false);
     const [editEmail, setEditEmail] = useState(false);
+
+    const dispatchUserInfoUpdateActions = () => {
+        dispatch(userInfoUpdateActions(user.data.id, { firstName, lastName, email }));
+    }
+
+    const handleUpdate = () => {
+        setEditFirstName(false);
+        setEditLastName(false);
+        setEditEmail(false);
+        dispatchUserInfoUpdateActions();
+    }
 
     return (
         <>
@@ -38,7 +52,7 @@ const Cookbook = () => {
                                 <td>
                                     {
                                         editFirstName 
-                                            ? <i className="fa-solid fa-check" onClick={() => setEditFirstName(false)}></i>
+                                            ? <i className="fa-solid fa-check" onClick={() => handleUpdate()}></i>
                                             : <i className="fa-solid fa-pen-to-square" onClick={() => setEditFirstName(true)}></i>
                                     }
                                 </td>
@@ -55,7 +69,7 @@ const Cookbook = () => {
                                 <td>
                                     {
                                         editLastName 
-                                            ? <i className="fa-solid fa-check" onClick={() => setEditLastName(false)}></i>
+                                            ? <i className="fa-solid fa-check" onClick={() => handleUpdate()}></i>
                                             : <i className="fa-solid fa-pen-to-square" onClick={() => setEditLastName(true)}></i>
                                     }
                                 </td>
@@ -72,7 +86,7 @@ const Cookbook = () => {
                                 <td>
                                     {
                                         editEmail 
-                                            ? <i className="fa-solid fa-check" onClick={() => setEditEmail(false)}></i>
+                                            ? <i className="fa-solid fa-check" onClick={() => handleUpdate()}></i>
                                             : <i className="fa-solid fa-pen-to-square" onClick={() => setEditEmail(true)}></i>
                                     }
                                 </td>

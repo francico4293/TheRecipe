@@ -43,9 +43,15 @@ const removeRecipeFromUserRecipes = async (userId, recipeId) => {
     return await user.save();
 }
 
+const updateUserInfo = async (id, firstName, lastName, email) => {
+    const user = await User.findByIdAndUpdate(id, { firstName, lastName, email }, { new: true });
+    return user;
+}
+
 module.exports = { 
     createUser, 
     findUserByCredentials,
     appendToUserRecipes,
-    removeRecipeFromUserRecipes
+    removeRecipeFromUserRecipes,
+    updateUserInfo
 };

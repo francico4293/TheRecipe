@@ -2,7 +2,7 @@
 
 // imports
 const express = require('express');
-const usersRouter = require('./routers/users');
+const usersRouter = require('./routers/usersRouter');
 require('./database/dbcon');
 
 // initialize new express application
