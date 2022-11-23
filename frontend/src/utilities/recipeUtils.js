@@ -16,9 +16,7 @@ export const requestRecipes = async (url, dispatch) => {
     const response = await fetch(url);
             
     if (response.status === 200) {
-        const responseResults = await response.json();
-        sessionStorage.setItem(RESULTS, JSON.stringify(responseResults.results));
-        dispatch({ type: RECIPE_RESULTS_SUCCESS, payload: responseResults.results });
+        await handleRecipeRequestSuccess(response, dispatch);
     } else {
         throw new Error();
     }
@@ -33,8 +31,7 @@ export const requestRecipeCard = async (url, dispatch) => {
     const response = await fetch(url);
 
     if (response.status === 200) {
-        const result = await response.json();
-        dispatch({ type: RECIPE_CARD_SUCCESS, payload: result.url });
+        await handleRecipeCardSuccess(response, dispatch);
     } else {
         throw new Error();
     }
@@ -49,8 +46,7 @@ export const requestRecipeNutrition = async (url, dispatch) => {
     const response = await fetch(url);
 
     if (response.status === 200) {
-        const blob = await response.blob();
-        dispatch({ type: RECIPE_NUTRITION_SUCCESS, payload: URL.createObjectURL(blob) });
+        await handleRecipeNutritionSuccess(response, dispatch);
     } else {
         throw new Error();
     }
@@ -65,8 +61,7 @@ export const requestRecipeTaste = async (url, dispatch) => {
     const response = await fetch(url);
 
     if (response.status === 200) {
-        const result = await response.json();
-        dispatch({ type: RECIPE_TASTE_SUCCESS, payload: result });
+        await handleRecipeTasteSuccess(response, dispatch);
     } else {
         throw new Error();
     }
@@ -81,9 +76,34 @@ export const requestSimilarRecipes = async (url, dispatch) => {
     const response = await fetch(url);
 
     if (response.status === 200) {
-        const result = await response.json();
-        dispatch({ type: SIMILAR_RECIPE_SUCCESS, payload: result });
+        await handleSimilarRecipeSuccess(response, dispatch);
     } else {
         throw new Error();
     }
+}
+
+const handleRecipeRequestSuccess = async (response, dispatch) => {
+    const responseResults = await response.json();
+    sessionStorage.setItem(RESULTS, JSON.stringify(responseResults.results));
+    dispatch({ type: RECIPE_RESULTS_SUCCESS, payload: responseResults.results });
+}
+
+const handleRecipeCardSuccess = async (response, dispatch) => {
+    const result = await response.json();
+    dispatch({ type: RECIPE_CARD_SUCCESS, payload: result.url });
+}
+
+const handleRecipeNutritionSuccess = async (response, dispatch) => {
+    const blob = await response.blob();
+    dispatch({ type: RECIPE_NUTRITION_SUCCESS, payload: URL.createObjectURL(blob) });
+}
+
+const handleRecipeTasteSuccess = async (response, dispatch) => {
+    const result = await response.json();
+    dispatch({ type: RECIPE_TASTE_SUCCESS, payload: result });
+}
+
+const handleSimilarRecipeSuccess = async (response, dispatch) => {
+    const result = await response.json();
+    dispatch({ type: SIMILAR_RECIPE_SUCCESS, payload: result });
 }
