@@ -40,12 +40,7 @@ const Home = () => {
     const [showNutritionFilter, setShowNutritionFilter] = useState(false);
     const [reachedPageBottom, setReachedPageBottom] = useState(false);
 
-    const configureRecipeResultsRequestUrl = () => {
-        let url = `${process.env.REACT_APP_SPOONACULAR_ROOT}/recipes/complexSearch` + 
-                `?apiKey=${process.env.REACT_APP_API_KEY}&number=100&query=${searchQuery}`;
-
-        // if calories, protein, carbs, or fats are an empty string, then the filter wasn't set
-
+    const appendRecipeNutritionFilters = (url) => {
         if (calories.length > 0) {
             url = url + `&maxCalories=${calories}`;
         }
@@ -63,6 +58,13 @@ const Home = () => {
         }
 
         return url;
+    }
+
+    const configureRecipeResultsRequestUrl = () => {
+        let url = `${process.env.REACT_APP_SPOONACULAR_ROOT}/recipes/complexSearch` + 
+                `?apiKey=${process.env.REACT_APP_API_KEY}&number=100&query=${searchQuery}`;
+
+        return appendRecipeNutritionFilters(url);
     }
 
     const dispatchRecipeResultsActions = () => {

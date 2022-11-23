@@ -7,6 +7,11 @@ import {
     SIMILAR_RECIPE_SUCCESS
 } from "../constants/recipeConstants";
 
+/**
+ * Makes an HTTP GET request for recipes associated with a specific food keyword. 
+ * @param {string} url - The target URL to make the HTTP GET request to.
+ * @param {function} dispatch - A redux function used to dispatch actions.
+ */
 export const requestRecipes = async (url, dispatch) => {
     const response = await fetch(url);
             
@@ -19,6 +24,11 @@ export const requestRecipes = async (url, dispatch) => {
     }
 }
 
+/**
+ * Makes an HTTP GET request for a recipe card.
+ * @param {string} url - The target URL to make the HTTP GET request to.
+ * @param {function} dispatch - A redux function used to dispatch actions.
+ */
 export const requestRecipeCard = async (url, dispatch) => {
     const response = await fetch(url);
 
@@ -30,6 +40,11 @@ export const requestRecipeCard = async (url, dispatch) => {
     }
 }
 
+/**
+ * Makes an HTTP GET request for a recipe nutrition label.
+ * @param {string} url - The target URL to make the HTTP GET request to.
+ * @param {function} dispatch - A redux function used to dispatch actions.
+ */
 export const requestRecipeNutrition = async (url, dispatch) => {
     const response = await fetch(url);
 
@@ -41,6 +56,11 @@ export const requestRecipeNutrition = async (url, dispatch) => {
     }
 }
 
+/**
+ * Makes an HTTP GET request for a recipe taste profile JSON object.
+ * @param {string} url - The target URL to make the HTTP GET request to.
+ * @param {function} dispatch - A redux function used to dispatch actions.
+ */
 export const requestRecipeTaste = async (url, dispatch) => {
     const response = await fetch(url);
 
@@ -52,6 +72,11 @@ export const requestRecipeTaste = async (url, dispatch) => {
     }
 }
 
+/**
+ * Makes an HTTP GET request for similar recipes.
+ * @param {string} url - The target URL to make the HTTP GET request to.
+ * @param {function} dispatch - A redux function used to dispatch actions.
+ */
 export const requestSimilarRecipes = async (url, dispatch) => {
     const response = await fetch(url);
 

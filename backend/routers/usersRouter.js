@@ -20,7 +20,7 @@ router.post('/signup', sanitizeNames, async (req, res, next) => {
     try {
         const user = await createUser(req.body);
         if (user === null) {
-            return res.status(400).json({ message: 'Email already in use' });
+            return res.status(400).json({ error: 'Email already in use' });
         }
 
         res.status(201).json(
@@ -44,7 +44,7 @@ router.post('/login', async (req, res, next) => {
     try {
         const user = await findUserByCredentials(req.body.email, req.body.password);
         if (user === null) {
-            return res.status(400).json({ message: 'Login failed - email or password incorrect' });
+            return res.status(400).json({ error: 'Login failed - email or password incorrect' });
         }
 
         return res.status(200).json(
