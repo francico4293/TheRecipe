@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { 
+    useSelector, 
+    useDispatch 
+} from 'react-redux';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { recipeNutritionFiltersActions } from '../actions/recipeActions';
-import { NUTRITION_FILTERS } from '../constants/recipeConstants';
+import {
+     NUTRITION_FILTERS, 
+     SET_NUTRITION_FILTERS 
+} from '../constants/recipeConstants';
 
 const NutritionFilter = ({ showNutritionFilter, setShowNutritionFilter }) => {
     const dispatch = useDispatch();
@@ -20,17 +25,33 @@ const NutritionFilter = ({ showNutritionFilter, setShowNutritionFilter }) => {
 
     const handleSetClick = () => {
         setShowNutritionFilter(false);
-        sessionStorage.setItem(NUTRITION_FILTERS, JSON.stringify({ calories, protein, carbs, fats }));
-        dispatch(recipeNutritionFiltersActions(calories, protein, carbs, fats));
+        sessionStorage.setItem(
+            NUTRITION_FILTERS, 
+            JSON.stringify({ calories, protein, carbs, fats })
+        );
+        dispatch({ 
+            type: SET_NUTRITION_FILTERS, 
+            payload: { calories, protein, carbs, fats } 
+        });
     }
 
-    const handleClearClick = () => {
+    const clearNutritionFilters = () => {
         setCalories('');
         setProtein('');
         setCarbs('');
         setFats('');
-        sessionStorage.setItem(NUTRITION_FILTERS, JSON.stringify({ calories: '', protein: '', carbs: '', fats: '' }));
-        dispatch(recipeNutritionFiltersActions('', '', '', ''));
+    }
+
+    const handleClearClick = () => {
+        clearNutritionFilters();
+        sessionStorage.setItem(
+            NUTRITION_FILTERS, 
+            JSON.stringify({ calories: '', protein: '', carbs: '', fats: '' })
+        );
+        dispatch({ 
+            type: SET_NUTRITION_FILTERS, 
+            payload: { calories: '', protein: '', carbs: '', fats: '' } 
+        });
     }
 
     return (

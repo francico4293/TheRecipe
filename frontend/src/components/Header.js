@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { WELCOME } from '../constants/commonConstants';
-import { showIngredientToolAction } from '../actions/userActions';
+import { SHOW_INGREDIENT_TOOL } from '../constants/userConstants';
 
 const Header = () => {
     const dispatch = useDispatch();
@@ -12,7 +12,7 @@ const Header = () => {
     const user = useSelector(state => state.user);
 
     const dispatchShowIngredientToolAction = () => {
-        dispatch(showIngredientToolAction());
+        dispatch({ type: SHOW_INGREDIENT_TOOL });
     }
 
     const logout = () => {

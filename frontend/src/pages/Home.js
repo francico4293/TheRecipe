@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { 
+    useDispatch, 
+    useSelector 
+} from 'react-redux';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
@@ -8,14 +11,21 @@ import Popover from 'react-bootstrap/Popover';
 import Stack from 'react-bootstrap/Stack';
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
-import { recipeResultsActions } from '../actions/recipeActions';
+import { recipeActions } from '../actions/recipeActions';
 import RecipeResult from '../components/RecipeResult';
 import Paginate from '../components/Paginate';
-import { RESULTS, PAGE } from '../constants/recipeConstants';
+import { 
+    RESULTS, 
+    PAGE, 
+    RECIPE_RESULTS_REQUEST, 
+    RECIPE_RESULTS_SUCCESS, 
+    RECIPE_RESULTS_FAILURE 
+} from '../constants/recipeConstants';
 import Welcome from '../components/Welcome';
 import NutritionFilter from '../components/NutritionFilter';
 import IngredientDefinitionTool from '../components/IngredientDefinitionTool';
 import { WELCOME } from '../constants/commonConstants';
+import { requestRecipes } from '../utilities/recipeUtils';
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -57,7 +67,15 @@ const Home = () => {
 
     const dispatchRecipeResultsActions = () => {
         const recipeResultsRequestUrl = configureRecipeResultsRequestUrl();
-        dispatch(recipeResultsActions(recipeResultsRequestUrl));
+        dispatch(recipeActions(
+            recipeResultsRequestUrl,
+            { 
+                request: RECIPE_RESULTS_REQUEST, 
+                success: RECIPE_RESULTS_SUCCESS, 
+                failure: RECIPE_RESULTS_FAILURE 
+            },
+            requestRecipes
+        ));
     }
 
     const clearSearchResults = () => {

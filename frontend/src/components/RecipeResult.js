@@ -1,21 +1,39 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { 
+    useDispatch, 
+    useSelector 
+} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Popover from 'react-bootstrap/Popover';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Stack from 'react-bootstrap/Stack';
 import Button from 'react-bootstrap/Button';
-import { 
-    recipeCardActions,
-    recipeNutritionActions,
-    recipeTasteActions,
-    similarRecipesActions
-} from '../actions/recipeActions';
+import { recipeActions } from '../actions/recipeActions';
 import { 
     userRecipeFavoriteActions, 
     userRecipeDeleteActions 
 } from '../actions/userActions';
+import { 
+    RECIPE_CARD_FAILURE, 
+    RECIPE_CARD_REQUEST, 
+    RECIPE_CARD_SUCCESS, 
+    RECIPE_NUTRITION_FAILURE, 
+    RECIPE_NUTRITION_REQUEST,
+    RECIPE_NUTRITION_SUCCESS,
+    RECIPE_TASTE_FAILURE,
+    RECIPE_TASTE_REQUEST,
+    RECIPE_TASTE_SUCCESS,
+    SIMILAR_RECIPE_FAILURE,
+    SIMILAR_RECIPE_REQUEST,
+    SIMILAR_RECIPE_SUCCESS
+} from '../constants/recipeConstants';
+import { 
+    requestRecipeCard, 
+    requestRecipeNutrition, 
+    requestRecipeTaste, 
+    requestSimilarRecipes
+} from '../utilities/recipeUtils';
 
 const RecipeResult = ({ result, page }) => {
     const dispatch = useDispatch();
@@ -27,7 +45,7 @@ const RecipeResult = ({ result, page }) => {
     const [showDeleteRecipePopover, setShowDeleteRecipePopover] = useState(false);
 
     const dispatchRecipeFavoriteActions = () => {
-        dispatch(userRecipeFavoriteActions(user.data.id, result.id, result.title, result.image));
+        dispatch(userRecipeFavoriteActions(user.data.id, result));
     }
 
     const dispatchRecipeDeleteActions = () => {
@@ -35,12 +53,68 @@ const RecipeResult = ({ result, page }) => {
         dispatch(userRecipeDeleteActions(user.data.id, result.recipeId));
     }
 
+    const dispatchRecipeCardActions = () => {
+        const url = `${process.env.REACT_APP_SPOONACULAR_ROOT}/recipes/${result.id}/card` +
+            `?apiKey=${process.env.REACT_APP_API_KEY}`;
+
+        const dispatchTypes = {
+            request: RECIPE_CARD_REQUEST,
+            success: RECIPE_CARD_SUCCESS,
+            failure: RECIPE_CARD_FAILURE
+        };
+
+        dispatch(recipeActions(url, dispatchTypes, requestRecipeCard));
+    }
+
+    const dispatchRecipeNutritionActions = () => {
+        const url = `${process.env.REACT_APP_SPOONACULAR_ROOT}/recipes/${result.id}/nutritionLabel.png` +
+            `?apiKey=${process.env.REACT_APP_API_KEY}`;
+
+        const dispatchTypes = {
+            request: RECIPE_NUTRITION_REQUEST,
+            success: RECIPE_NUTRITION_SUCCESS,
+            failure: RECIPE_NUTRITION_FAILURE
+        };
+
+        dispatch(recipeActions(url, dispatchTypes, requestRecipeNutrition));
+    }
+
+    const dispatchRecipeTasteActions = () => {
+        const url = `${process.env.REACT_APP_SPOONACULAR_ROOT}/recipes/${result.id}/tasteWidget.json` + 
+            `?apiKey=${process.env.REACT_APP_API_KEY}`;
+        
+        const dispatchTypes = {
+            request: RECIPE_TASTE_REQUEST,
+            success: RECIPE_TASTE_SUCCESS,
+            failure: RECIPE_TASTE_FAILURE
+        };
+
+        dispatch(recipeActions(url, dispatchTypes, requestRecipeTaste));
+    }
+
+    const dispatchSimilarRecipeActions = () => {
+        const url = `${process.env.REACT_APP_SPOONACULAR_ROOT}/recipes/${result.id}/similar` +
+            `?apiKey=${process.env.REACT_APP_API_KEY}&number=4`;
+
+        const dispatchTypes = {
+            request: SIMILAR_RECIPE_REQUEST,
+            success: SIMILAR_RECIPE_SUCCESS,
+            failure: SIMILAR_RECIPE_FAILURE
+        };
+
+        dispatch(recipeActions(url, dispatchTypes, requestSimilarRecipes));
+    }
+
     const dispatchExploreRecipeActions = () => {
-        navigate(`/recipes/${result.id}`)
-        dispatch(recipeCardActions(result.id));
-        dispatch(recipeNutritionActions(result.id));
-        dispatch(recipeTasteActions(result.id));
-        dispatch(similarRecipesActions(result.id));
+        dispatchRecipeCardActions();
+        dispatchRecipeNutritionActions();
+        dispatchRecipeTasteActions();
+        dispatchSimilarRecipeActions();
+    }
+
+    const handleExporeRecipesClick = () => {
+        navigate(`/recipes/${result.id}`);
+        dispatchExploreRecipeActions();
     }
 
     // show warning to user when they favorite a recipe
@@ -98,13 +172,13 @@ const RecipeResult = ({ result, page }) => {
         if (user.userLoggedIn) {
             return (
                 <div id='recipe-actions-container'>
-                    <Button variant='primary' onClick={() => dispatchExploreRecipeActions()}>Explore Recipe</Button>
+                    <Button variant='primary' onClick={() => handleExporeRecipesClick()}>Explore Recipe</Button>
                     {getIcon()}
                 </div>
             );
         } else { 
             return (
-                <Button variant='primary' onClick={() => dispatchExploreRecipeActions()}>Explore Recipe</Button>
+                <Button variant='primary' onClick={() => handleExporeRecipesClick()}>Explore Recipe</Button>
             );
         }
     }

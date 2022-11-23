@@ -4,36 +4,35 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Button from 'react-bootstrap/Button';
-import { hideIngredientToolAction } from '../actions/userActions';
+import { HIDE_INGREDIENT_TOOL } from '../constants/userConstants';
 
 const IngredientDefinitionTool = () => {
+    const dispatch = useDispatch();
+
     const [item, setItem] = useState('');
     const [definition, setDefinition] = useState('');
 
-    const dispatch = useDispatch();
-
     const ingredientDefinitionTool = useSelector(state => state.ingredientDefinitionTool);
 
-    const dispatchHideIngredientToolAction = () => {
-        dispatch(hideIngredientToolAction());
+    const ingredientDefinitionRequest = async () => {
+        const response = await fetch(`/ingredientinfo?item=${item}`);
+
+        if (response.status === 200) {
+            const ingredientInfo = await response.json();
+            setDefinition(ingredientInfo.definition);
+        }
     }
 
-    // make HTTP GET request to microservice using user specified item as url query parameter
     const fetchIngredientDefinition = async () => {
         try {
-            const response = await fetch(`/ingredientinfo?item=${item}`);
-
-            if (response.status === 200) {
-                const ingredientInfo = await response.json();
-                setDefinition(ingredientInfo.definition);
-            }
+            ingredientDefinitionRequest();
         } catch (err) {
             console.error(err);
         }
     }
 
     return (
-        <Offcanvas show={ingredientDefinitionTool.showTool} backdrop={false} scroll={true} onHide={() => dispatchHideIngredientToolAction()} placement='top' style={{ height: '30%' }}>
+        <Offcanvas show={ingredientDefinitionTool.showTool} backdrop={false} scroll={true} onHide={() => dispatch({ type: HIDE_INGREDIENT_TOOL })} placement='top' style={{ height: '30%' }}>
             <Offcanvas.Header closeButton>
                 <Offcanvas.Title>Ingredient Definition Search Tool</Offcanvas.Title>
             </Offcanvas.Header>

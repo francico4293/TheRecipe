@@ -2,9 +2,10 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Pagination from 'react-bootstrap/Pagination';
 import { 
-    recipeResultsPageRequestAction,
-    recipeResultsPageSuccessAction
-} from '../actions/recipeActions';
+    PAGE,
+    RECIPE_PAGE_CHANGE_REQUEST, 
+    RECIPE_PAGE_CHANGE_SUCCESS 
+} from '../constants/recipeConstants';
 
 const Paginate = () => {
     const dispatch = useDispatch();
@@ -13,10 +14,11 @@ const Paginate = () => {
     const recipeResultsPage = useSelector(state => state.recipeResultsPage);
 
     const dispatchRecipeResultsPageActions = (page) => {
-        dispatch(recipeResultsPageRequestAction());
+        dispatch({ type: RECIPE_PAGE_CHANGE_REQUEST });
         // simulated lag in new page request
         setTimeout(() => {
-            dispatch(recipeResultsPageSuccessAction(page));
+            dispatch({ type: RECIPE_PAGE_CHANGE_SUCCESS, payload: page });
+            sessionStorage.setItem(PAGE, page);
             window.scrollTo(0, 1000);
         }, 500);
     }
