@@ -60,6 +60,7 @@ const Home = () => {
         return url;
     }
 
+    // add nutrition filters as query parameters
     const configureRecipeResultsRequestUrl = () => {
         let url = `${process.env.REACT_APP_SPOONACULAR_ROOT}/recipes/complexSearch` + 
                 `?apiKey=${process.env.REACT_APP_API_KEY}&number=100&query=${searchQuery}`;
@@ -87,6 +88,7 @@ const Home = () => {
         window.location.reload(false);
     }
 
+    // show tool tip used to warn user before an action is taken
     const renderTooltip = (props, message) => (
         <Tooltip id='button-tooltip' {...props}>
             {message}

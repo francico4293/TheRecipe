@@ -23,6 +23,7 @@ const NutritionFilter = ({ showNutritionFilter, setShowNutritionFilter }) => {
     const [carbs, setCarbs] = useState(recipeNutritionFilters.carbs);
     const [fats, setFats] = useState(recipeNutritionFilters.fats);
 
+    // set nutrition filters
     const handleSetClick = () => {
         setShowNutritionFilter(false);
         sessionStorage.setItem(
@@ -42,6 +43,7 @@ const NutritionFilter = ({ showNutritionFilter, setShowNutritionFilter }) => {
         setFats('');
     }
 
+    // clear nutrition filter data
     const handleClearClick = () => {
         clearNutritionFilters();
         sessionStorage.setItem(

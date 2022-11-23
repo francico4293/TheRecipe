@@ -18,10 +18,6 @@ const Faq = () => {
         { question: 'What happens when I explore a recipe?', answer: 'Exploring a recipe will provide you with a recipe card, a taste profile, and nutrition facts for the recipe. You\'ll also be shown some related recipes we think you might like.' }
     ];
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
     return (
         <>
             <Header/>

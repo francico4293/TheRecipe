@@ -20,7 +20,6 @@ import {
   );
 
   export const TasteProfile = ({ profile }) => {
-
     // chartjs radar configuration and data
     const data = {
         labels: ['Sweetness', 'Saltiness', 'Sourness', 'Bitterness', 'Savoriness', 'Fattiness'],

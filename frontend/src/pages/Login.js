@@ -21,6 +21,7 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    // user is logging in
     const dispatchUserLoginActions = () => {
         dispatch(userLoginActions(email, password, navigate));
     }

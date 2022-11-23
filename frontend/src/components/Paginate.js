@@ -16,6 +16,7 @@ const Paginate = () => {
     const recipeResults = useSelector(state => state.recipeResults);
     const recipeResultsPage = useSelector(state => state.recipeResultsPage);
 
+    // user is navigating to a new recipe results page
     const dispatchRecipeResultsPageActions = (page) => {
         dispatch({ type: RECIPE_PAGE_CHANGE_REQUEST });
         // simulated lag in new page request

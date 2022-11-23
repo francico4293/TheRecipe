@@ -44,16 +44,19 @@ const RecipeResult = ({ result, page }) => {
     const [showPopover, setShowPopover] = useState(false);
     const [showDeleteRecipePopover, setShowDeleteRecipePopover] = useState(false);
 
+    // user has added a recipe to their cookbook
     const dispatchRecipeFavoriteActions = () => {
         dispatch(userRecipeFavoriteActions(user.data.id, result));
     }
 
+    // user has removed a recipe from their cookbook
     const dispatchRecipeDeleteActions = () => {
         setShowDeleteRecipePopover(false);
         dispatch(userRecipeDeleteActions(user.data.id, result.recipeId));
     }
 
     const dispatchRecipeCardActions = () => {
+        // url for recipe card
         const url = `${process.env.REACT_APP_SPOONACULAR_ROOT}/recipes/${result.id}/card` +
             `?apiKey=${process.env.REACT_APP_API_KEY}`;
 
@@ -67,6 +70,7 @@ const RecipeResult = ({ result, page }) => {
     }
 
     const dispatchRecipeNutritionActions = () => {
+        // url for nutrition label
         const url = `${process.env.REACT_APP_SPOONACULAR_ROOT}/recipes/${result.id}/nutritionLabel.png` +
             `?apiKey=${process.env.REACT_APP_API_KEY}`;
 
@@ -80,6 +84,7 @@ const RecipeResult = ({ result, page }) => {
     }
 
     const dispatchRecipeTasteActions = () => {
+        // url for taste widget JSON data
         const url = `${process.env.REACT_APP_SPOONACULAR_ROOT}/recipes/${result.id}/tasteWidget.json` + 
             `?apiKey=${process.env.REACT_APP_API_KEY}`;
         
@@ -93,6 +98,7 @@ const RecipeResult = ({ result, page }) => {
     }
 
     const dispatchSimilarRecipeActions = () => {
+        // url for similar recipes
         const url = `${process.env.REACT_APP_SPOONACULAR_ROOT}/recipes/${result.id}/similar` +
             `?apiKey=${process.env.REACT_APP_API_KEY}&number=4`;
 
@@ -112,6 +118,7 @@ const RecipeResult = ({ result, page }) => {
         dispatchSimilarRecipeActions();
     }
 
+    // user has decided to explore a specific recipe
     const handleExporeRecipesClick = () => {
         navigate(`/recipes/${result.id}`);
         dispatchExploreRecipeActions();

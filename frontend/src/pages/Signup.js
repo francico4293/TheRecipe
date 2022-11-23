@@ -26,6 +26,7 @@ const Signup = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [passwordMismatch, setPasswordMismatch] = useState(false);
 
+    // user is signing up for the website
     const dispatchUserActions = () => {
         if (password === confirmPassword) {
             dispatch(userSignupActions(

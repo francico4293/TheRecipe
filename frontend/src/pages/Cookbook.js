@@ -23,6 +23,7 @@ const Cookbook = () => {
     const [editLastName, setEditLastName] = useState(false);
     const [editEmail, setEditEmail] = useState(false);
 
+    // user is updating their profile information
     const dispatchUserInfoUpdateActions = () => {
         dispatch(userInfoUpdateActions(user.data.id, { firstName, lastName, email }));
     }
