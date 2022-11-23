@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { 
+    useSelector, 
+    useDispatch 
+} from 'react-redux';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import RecipeResult from '../components/RecipeResult';

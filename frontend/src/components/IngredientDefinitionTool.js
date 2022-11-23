@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { 
+    useDispatch, 
+    useSelector 
+} from 'react-redux';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Offcanvas from 'react-bootstrap/Offcanvas';
