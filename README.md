@@ -16,7 +16,7 @@ WHERE USED: frontend/src/actions, frontend/src/store.js frontend/src/constants f
 SOURCE: https://spoonacular.com/food-api/docs#Recipe-Taste-by-ID-Widget \
 AUTHOR: Spoonacular
 DESCRIPTION: I used the spoonacular taste JSON object and copied the chart.js design they used for their taste widget to
-show the taste profile for a recipe.
+show the taste profile for a recipe.\
 WHERE USED: frontend/src/components/TasteProfile.js
 
 SOURCE: https://unsplash.com/photos/vA1L1jRTM70 \
