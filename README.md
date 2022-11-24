@@ -14,7 +14,7 @@ with redux.\
 WHERE USED: frontend/src/actions, frontend/src/store.js frontend/src/constants frontend/src/reducers
 
 SOURCE: https://spoonacular.com/food-api/docs#Recipe-Taste-by-ID-Widget \
-AUTHOR: Spoonacular
+AUTHOR: Spoonacular \
 DESCRIPTION: I used the spoonacular taste JSON object and copied the chart.js design they used for their taste widget to
 show the taste profile for a recipe.\
 WHERE USED: frontend/src/components/TasteProfile.js
