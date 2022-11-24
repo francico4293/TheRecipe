@@ -43,6 +43,12 @@ SOURCE: https://unsplash.com/photos/-YHSwy6uqvk \
 AUTHOR: Lily Banse
 DESCRIPTION: I used this photo by Lily Banse as a background image in my Cookbook page
 
+SOURCE: https://fontawesome.com/ \
+DESCRIPTION: This application uses fontawesome as a source for all icons
+
+SOURCE: https://react-bootstrap.github.io/ \
+DESCRIPTION: This application was built using react-bootstrap
+
 NOTE: This project evolved over several implementations that can be referenced at the following GitHub repo locations\
 https://github.com/francico4293/CS361-PersonalProjectFrontend \
 https://github.com/francico4293/CS361-TheRecipeV2 \
