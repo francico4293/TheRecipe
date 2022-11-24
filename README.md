@@ -4,7 +4,7 @@ AUTHOR: Andrew Mead\
 DESCRIPTION: This was a extracurricular course I previously used to help me learn Node.js. I referenced
 this source to remember how to connect to a local MongoDB database using mongoose, how to use bcryptjs for password encryption,
 how to compare a users password against the encrypted one, and how to use validator for email validation\
-WHERE USED: backend/database/dbcon.js backend/models/users.js backend/controllers/user.js
+WHERE USED: backend/database/dbcon.js backend/models/usersModel.js backend/controllers/usersController.js
 
 SOURCE: https://www.udemy.com/course/mern-ecommerce/ \
 AUTHOR: Brad Traversy\
@@ -12,6 +12,12 @@ DESCRIPTION: This was an extracurricular course I previously used to help me lea
 was introduced to redux for global state management. I used this course to help me understand how to implement and work
 with redux.\
 WHERE USED: frontend/src/actions, frontend/src/store.js frontend/src/constants frontend/src/reducers
+
+SOURCE: https://spoonacular.com/food-api/docs#Recipe-Taste-by-ID-Widget \
+AUTHOR: Spoonacular
+DESCRIPTION: I used the spoonacular taste JSON object and copied the chart.js design they used for their taste widget to
+show the taste profile for a recipe.
+WHERE USED: frontend/src/components/TasteProfile.js
 
 SOURCE: https://unsplash.com/photos/vA1L1jRTM70 \
 AUTHOR: Calum Lewis\
@@ -32,6 +38,10 @@ DESCRIPTION: I used this photo by Sixteen Miles Out as a background image in my 
 SOURCE: https://unsplash.com/photos/AvqpdLRjABs \
 AUTHOR: Aaron Burden \
 DESCRIPTION: I used this photo by Aaron Burden as a background image in my Signup page
+
+SOURCE: https://unsplash.com/photos/-YHSwy6uqvk \
+AUTHOR: Lily Banse
+DESCRIPTION: I used this photo by Lily Banse as a background image in my Cookbook page
 
 NOTE: This project evolved over several implementations that can be referenced at the following GitHub repo locations\
 https://github.com/francico4293/CS361-PersonalProjectFrontend \
