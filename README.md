@@ -49,6 +49,9 @@ DESCRIPTION: This application uses fontawesome as a source for all icons
 SOURCE: https://react-bootstrap.github.io/ \
 DESCRIPTION: This application was built using react-bootstrap
 
+SOURCE: https://spoonacular.com/food-api \
+DESCRIPTION: Spoonacular was the API used to provide recipe data for this project
+
 NOTE: This project evolved over several implementations that can be referenced at the following GitHub repo locations\
 https://github.com/francico4293/CS361-PersonalProjectFrontend \
 https://github.com/francico4293/CS361-TheRecipeV2 \
