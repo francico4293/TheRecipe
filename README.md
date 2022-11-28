@@ -19,6 +19,11 @@ DESCRIPTION: I used the spoonacular taste JSON object and copied the chart.js de
 show the taste profile for a recipe.\
 WHERE USED: frontend/src/components/TasteProfile.js
 
+SOURCE: https://stackoverflow.com/questions/60795539/how-to-convert-blob-file-to-images-in-nodejs \
+AUTHOR: kira \
+DESCRIPTION: I used this stackoverflow post to learn how to convert a blob file to an image \
+WHERE USED: frontend/src/utilities/recipeUtils.js
+
 SOURCE: https://unsplash.com/photos/vA1L1jRTM70 \
 AUTHOR: Calum Lewis\
 DESCRIPTION: I used this photo by Calum Lewis as a background image for my Recipe page
